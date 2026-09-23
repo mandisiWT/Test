@@ -1,0 +1,392 @@
+/* =========================================================
+   1. DESIGN TOKENS
+   Change a colour or font here and it updates everywhere.
+   ========================================================= */
+:root {
+  --cobalt: #2540f5;   /* main brand colour: hero and footer */
+  --ink:    #0d1230;   /* dark navy: text and the work section */
+  --paper:  #f4f5fb;   /* light page background */
+  --butter: #ffe066;   /* bright yellow: buttons, tools strip, links on dark */
+  --mist:   #c9d1ff;   /* soft blue: highlights */
+
+  --display: 'Bricolage Grotesque', 'Arial Black', sans-serif;
+  --body:    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+}
+
+/* =========================================================
+   2. RESET AND BASICS
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+h1, h2, h3, p, ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+/* Visible outline when someone navigates with the keyboard */
+:focus-visible {
+  outline: 3px solid var(--butter);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   3. LAYOUT HELPERS
+   .wrap keeps content in a centred column.
+   .section gives every block the same vertical breathing room.
+   ========================================================= */
+.wrap {
+  max-width: 70rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+.section-title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  margin-bottom: 2rem;
+}
+
+/* =========================================================
+   4. HERO  (this is the one big, bold moment)
+   ========================================================= */
+.hero {
+  background: var(--cobalt);
+  color: #fff;
+}
+
+.name {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(3.4rem, 14vw, 11rem);
+  line-height: 0.88;
+  letter-spacing: -0.035em;
+  margin-bottom: 2rem;
+}
+
+.name span {
+  display: block;
+}
+
+/* Push the surname to the right so the name steps down the page */
+.name span:last-child {
+  margin-left: 0.45em;
+}
+
+.hero-role {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  margin-bottom: 0.75rem;
+}
+
+.hero-intro {
+  max-width: 36rem;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: var(--mist);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.6rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--butter);
+  border-radius: 999px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-solid {
+  background: var(--butter);
+  color: var(--ink);
+}
+
+.btn-solid:hover {
+  background: transparent;
+  color: var(--butter);
+}
+
+.btn-line {
+  color: var(--butter);
+}
+
+.btn-line:hover {
+  background: var(--butter);
+  color: var(--ink);
+}
+
+/* =========================================================
+   5. TOOLS STRIP (scrolling)
+   ========================================================= */
+.tools {
+  background: var(--butter);
+  color: var(--ink);
+  overflow: hidden;
+  padding-block: 1.1rem;
+}
+
+.tools-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 45s linear infinite;
+}
+
+/* Each copy of the list has padding on the right so both copies match */
+.tools-group {
+  display: flex;
+  gap: 3rem;
+  padding-right: 3rem;
+}
+
+.tools-group li {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  white-space: nowrap;
+}
+
+/* Slide left by exactly one copy, then jump back: looks endless */
+@keyframes scroll-left {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* =========================================================
+   6. WHAT I DO  (Fix / Build / Buy / Organise)
+   ========================================================= */
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 1.5rem 3rem;
+  padding-block: 2rem;
+  border-top: 3px solid var(--ink);
+}
+
+.row:last-child {
+  border-bottom: 3px solid var(--ink);
+}
+
+.verb {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--cobalt);
+}
+
+.row-lead {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.row-body li {
+  padding-block: 0.3rem;
+}
+
+/* =========================================================
+   7. WORK HISTORY (dark section)
+   ========================================================= */
+.work {
+  background: var(--ink);
+  color: #fff;
+}
+
+.work .section-title {
+  color: var(--butter);
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr);
+  gap: 1rem 3rem;
+  padding-block: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.entry-dates {
+  font-weight: 600;
+  color: var(--mist);
+}
+
+.entry-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+  line-height: 1.15;
+}
+
+.entry-place {
+  color: var(--mist);
+  margin-bottom: 0.75rem;
+}
+
+.work details {
+  margin-top: 1.25rem;
+}
+
+.work summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--butter);
+}
+
+.work summary:hover {
+  text-decoration: underline;
+}
+
+.work details ul {
+  margin-top: 0.75rem;
+  padding-left: 1.1rem;
+  list-style: disc;
+}
+
+.work details li {
+  padding-block: 0.25rem;
+}
+
+/* =========================================================
+   8. LEARNING
+   ========================================================= */
+.learn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 2rem;
+}
+
+.learn-group {
+  padding: 1.5rem 0;
+  border-top: 3px solid var(--ink);
+}
+
+.learn-group h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.learn-group li {
+  padding-block: 0.25rem;
+}
+
+/* The in-progress column looks different on purpose: it is unfinished work */
+.learn-group.in-progress {
+  background: var(--mist);
+  border-top-color: var(--cobalt);
+  padding-inline: 1.5rem;
+}
+
+.learn-note {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* =========================================================
+   9. CONTACT FOOTER
+   ========================================================= */
+.contact {
+  background: var(--cobalt);
+  color: #fff;
+}
+
+.contact-lead {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.2rem, 3vw, 1.7rem);
+  margin-bottom: 0.5rem;
+}
+
+.contact-mail {
+  display: inline-block;
+  max-width: 100%;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 6.5vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--butter);
+  overflow-wrap: anywhere;
+}
+
+.contact-mail:hover {
+  text-decoration-thickness: 4px;
+}
+
+.contact-links {
+  margin-top: 1.25rem;
+  font-weight: 600;
+}
+
+.contact-small {
+  margin-top: 2.5rem;
+  color: var(--mist);
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   10. SMALL SCREENS
+   ========================================================= */
+@media (max-width: 44rem) {
+  .row,
+  .entry {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* =========================================================
+   11. RESPECT PEOPLE WHO TURN OFF MOTION IN THEIR SETTINGS
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .tools-track {
+    animation: none;
+    width: auto;
+  }
+
+  .tools-group {
+    flex-wrap: wrap;
+  }
+
+  /* Hide the duplicate copy, since nothing scrolls any more */
+  .tools-group[aria-hidden="true"] {
+    display: none;
+  }
+}
