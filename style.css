@@ -58,7 +58,7 @@ a {
    .section gives every block the same vertical breathing room.
    ========================================================= */
 .wrap {
-  max-width: 70rem;
+  max-width: 100rem;
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
