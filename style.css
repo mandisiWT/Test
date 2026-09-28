@@ -377,8 +377,8 @@ a {
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
   .tools-track {
-    animation: none;
-    width: auto;
+    animation: none; */
+    width: auto; */
   }
 
   .tools-group {
