@@ -375,11 +375,10 @@ a {
 /* =========================================================
    11. RESPECT PEOPLE WHO TURN OFF MOTION IN THEIR SETTINGS
    ========================================================= */
-/*
 @media (prefers-reduced-motion: reduce) {
   .tools-track {
-    animation: none; */
-    width: auto; */
+    animation: none;
+    width: auto;
   }
 
   .tools-group {
@@ -391,4 +390,3 @@ a {
     display: none;
   }
 }
-*/
