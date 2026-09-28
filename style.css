@@ -375,6 +375,7 @@ a {
 /* =========================================================
    11. RESPECT PEOPLE WHO TURN OFF MOTION IN THEIR SETTINGS
    ========================================================= */
+/*
 @media (prefers-reduced-motion: reduce) {
   .tools-track {
     animation: none; */
@@ -390,3 +391,4 @@ a {
     display: none;
   }
 }
+*/
